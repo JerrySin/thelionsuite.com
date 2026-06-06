@@ -1,0 +1,305 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─────────────────────────────────────────────────────
+   DESIGN SYSTEM v2 TOKENS — The Lion Inn & Suites
+   Extracted from live thelionsuite.com site CSS
+   ───────────────────────────────────────────────────── */
+
+:root {
+  /* ── Brand Browns — Primary Palette ── */
+  --color-html-bg: #59412f;
+  --color-brown-dark: #3d1f0a;
+  --color-brown-mid: #5c3314;
+  --color-brown-warm: #7a4a20;
+
+  /* ── Text ── */
+  --color-tan-light: #dbcbb0;
+  --color-tan-mid: #c7cba6;
+  --color-tan-muted: #b09880;
+
+  /* ── Accent ── */
+  --color-blue: #a4c3dc;
+  --color-gold: #e8a020;
+  --color-gold-dark: #c07800;
+  --color-dark-btn: #2a2018;
+  --color-content-bg: #f5f0e8;
+  --color-footer-bg: #1a0d04;
+
+  /* ── Tailwind semantic tokens ── */
+  --background: #f5f0e8;
+  --foreground: #3d1f0a;
+  --card: #ffffff;
+  --card-foreground: #3d1f0a;
+  --popover: #ffffff;
+  --popover-foreground: #3d1f0a;
+  --primary: #e8a020;
+  --primary-foreground: #ffffff;
+  --secondary: #3d1f0a;
+  --secondary-foreground: #dbcbb0;
+  --muted: #ece5d8;
+  --muted-foreground: #7a4a20;
+  --accent: #dccec3;
+  --accent-foreground: #3d1f0a;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: rgba(90, 55, 25, 0.2);
+  --input: #ede6d9;
+  --ring: #e8a020;
+  --radius: 0.25rem;
+
+  /* Sidebar (design system page chrome — not used in site itself) */
+  --sidebar: #251508;
+  --sidebar-foreground: #dbcbb0;
+  --sidebar-primary: #e8a020;
+  --sidebar-primary-foreground: #1a0d04;
+  --sidebar-accent: #3d1f0a;
+  --sidebar-accent-foreground: #dbcbb0;
+  --sidebar-border: rgba(219, 203, 176, .12);
+  --sidebar-ring: #e8a020;
+}
+
+/* Dark mode follows same brand (site is always "warm dark") */
+.dark {
+  --background: #1a0d04;
+  --foreground: #dbcbb0;
+  --card: #251508;
+  --card-foreground: #dbcbb0;
+  --popover: #251508;
+  --popover-foreground: #dbcbb0;
+  --primary: #e8a020;
+  --primary-foreground: #1a0d04;
+  --secondary: #3d1f0a;
+  --secondary-foreground: #dbcbb0;
+  --muted: #3d2010;
+  --muted-foreground: #b09880;
+  --accent: #a4c3dc;
+  --accent-foreground: #1a0d04;
+  --border: rgba(219, 203, 176, .12);
+  --input: #3d1f0a;
+  --ring: #e8a020;
+}
+
+@theme inline {
+  --font-sans: var(--font-lato), 'Lato', system-ui, sans-serif;
+  --font-serif: var(--font-oswald), 'Oswald', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Geist Mono', monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --font-controwell: var(--font-controwell), Georgia, serif;
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-lato), 'Lato', system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-oswald), 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* DS brand utility classes */
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: #e8a020;
+    color: #fff;
+    font-family: var(--font-oswald), 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 0.65rem 1.5rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+
+  .btn-gold:hover {
+    background: #c07800;
+  }
+
+  .nav-link {
+    font-family: var(--font-lato), 'Lato', sans-serif;
+    font-size: 0.75rem;
+    color: #a4c3dc;
+    text-decoration: none;
+    border-bottom: 1px dotted #a4c3dc;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .nav-link:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  .nav-menu-link {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #f8b88b;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    border-top: 3px solid transparent;
+    padding: 6px 12px;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .nav-menu-link:hover {
+    color: #ffffff;
+  }
+
+  .nav-menu-link.active {
+    color: #e8a020;
+    background: rgba(232, 160, 32, 0.08);
+    border-top: 3px solid #e8a020;
+  }
+
+  .mobile-nav-link {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    border-radius: 6px;
+    border-left: 3px solid transparent;
+    color: #ffd1b1;
+    background: transparent;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .mobile-nav-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .mobile-nav-link.active {
+    color: #e8a020;
+    background: rgba(232, 160, 32, 0.08);
+    border-left: 3px solid #e8a020;
+  }
+
+  /* SVG Logo drop-shadow treatments */
+  .logo-glow-white {
+    filter: drop-shadow(1px 1px 1px #fff) drop-shadow(-1px 1px 1px #fff) drop-shadow(1px -1px 1px #fff) drop-shadow(-1px -1px 1px #fff);
+  }
+
+  .logo-glow-gold {
+    filter: drop-shadow(1px 1px 1px #e8a020) drop-shadow(-1px 1px 1px #e8a020) drop-shadow(1px -1px 1px #e8a020) drop-shadow(-1px -1px 1px #e8a020);
+  }
+
+  /* Brand main title font style */
+  .brand-title {
+    font-family: var(--font-controwell), Georgia, serif;
+    color: #ED2224;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  /* Hero Section Slideshow background overlays */
+  .hero-overlay {
+    background: linear-gradient(180deg, rgba(26, 13, 4, 0.25) 0%, rgba(26, 13, 4, 0.55) 50%, rgba(26, 13, 4, 0.92) 100%);
+  }
+
+  .hero-vignette {
+    background: linear-gradient(to right, rgba(26, 13, 4, 0.45) 0%, transparent 60%);
+  }
+
+  /* SVG Background Patterns */
+  .bg-pattern-plus-white {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .bg-pattern-plus-gold {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e8a020' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Room card hover — CSS-only to avoid 'use client' in Server Component */
+.room-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border-color: rgba(232, 160, 32, 0.5) !important;
+}
+
+
+/* DS scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #3d1f0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e8a020;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c07800;
+}
