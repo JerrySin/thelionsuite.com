@@ -11,6 +11,14 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react'
+import { Slideshow } from '@/components/slideshow'
+
+const slides = [
+  '/images/the-lion-inn-suites-double-queen-room-chetwynd.jpg',
+  '/images/the-lion-inn-suites-kitchen-stove-chetwynd.jpg',
+  '/images/the-lion-inn-suites-kitchen-facility-chetwynd.jpg',
+  '/images/the-lion-inn-suites-hospitality-chetwynd.jpg',
+]
 
 const galleryImages = [
   {
@@ -172,22 +180,29 @@ export default function GalleryPage() {
   return (
     <>
       <Header />
-      <main className="pt-20">
+      <main>
         {/* Hero Section */}
-        <section className="relative py-20 lg:py-28 bg-secondary">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto">
-              <p className="text-primary font-medium tracking-wider uppercase text-sm mb-4">
-                Photo Gallery
-              </p>
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-secondary-foreground mb-6 text-balance">
-                Browse Our Gallery
-              </h1>
-              <p className="text-secondary-foreground/70 text-lg leading-relaxed text-pretty">
-                Located right in the heart of Chetwynd, The Lion Inn & Suites offers 19 contemporary
-                suites fully equipped with high-end appliances and tasteful trendy design rooms that
-                will make you feel like a home away home.
-              </p>
+        <section className="relative min-h-[60vh] flex items-center pt-28 pb-20 overflow-hidden">
+          {/* Background Slideshow */}
+          <Slideshow slides={slides} className="absolute inset-0 z-0" />
+
+          <div className="absolute inset-0 z-10 hero-overlay" />
+
+          <div className="relative z-20 w-full">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="text-center max-w-3xl mx-auto">
+                <p className="font-sans text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[#a4c3dc] mb-4">
+                  Photo Gallery
+                </p>
+                <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-secondary-foreground mb-6 text-balance tracking-[0.04em] uppercase">
+                  Browse Our Gallery
+                </h1>
+                <p className="font-sans text-[0.95rem] text-[#dbcbb0] leading-[1.7] max-w-[520px] mx-auto text-pretty">
+                  Located right in the heart of Chetwynd, The Lion Inn & Suites offers 19 contemporary
+                  suites fully equipped with high-end appliances and tasteful trendy design rooms that
+                  will make you feel like a home away home.
+                </p>
+              </div>
             </div>
           </div>
         </section>
