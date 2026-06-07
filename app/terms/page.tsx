@@ -180,7 +180,7 @@ export default function TermsPage() {
               <div className="bg-card p-6 rounded-xl border border-border">
                 <h3 className="font-serif text-lg text-card-foreground mb-3">Daily Stay Guests</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Free cancellation for daily guests when notification is confirmed by 6 PM the day prior to check-in.
+                  Free cancellation for daily guests when notification is confirmed 24 hours prior to check-in.
                 </p>
               </div>
 

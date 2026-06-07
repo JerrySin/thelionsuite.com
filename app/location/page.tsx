@@ -74,6 +74,7 @@ const travelInfo = [
 ];
 
 const slides = [
+  '/images/welcome-to-chetwynd.jpg',
   '/images/the-lion-inn-suites-surroundings-chetwynd.jpg',
   '/images/the-lion-inn-suites-night-chetwynd.jpg',
   '/images/the-lion-inn-suites-exterior-chetwynd.jpg',
