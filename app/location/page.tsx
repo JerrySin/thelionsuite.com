@@ -74,10 +74,9 @@ const travelInfo = [
 ];
 
 const slides = [
-  '/images/the-lion-inn-suites-double-queen-room-chetwynd.jpg',
-  '/images/the-lion-inn-suites-kitchen-stove-chetwynd.jpg',
-  '/images/the-lion-inn-suites-kitchen-facility-chetwynd.jpg',
-  '/images/the-lion-inn-suites-queen-room-chetwynd.jpg',
+  '/images/the-lion-inn-suites-surroundings-chetwynd.jpg',
+  '/images/the-lion-inn-suites-night-chetwynd.jpg',
+  '/images/the-lion-inn-suites-exterior-chetwynd.jpg',
 ];
 
 export default function LocationPage() {
