@@ -37,7 +37,7 @@ export function Header() {
               className="transition-transform duration-300 group-hover:scale-105 logo-glow-white"
               priority
             />
-            <div className="hidden sm:block leading-tight">
+            <div className="hidden xl:block leading-tight">
               <p className="brand-title text-2xl font-extrabold logo-glow-white mt-8">
                 The Lion Inn &amp; Suites
               </p>
@@ -74,19 +74,26 @@ export function Header() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="block">
+          <div className="flex gap-2">
+            <a
+              href='tel:+12507889990'
+              className='btn-gold px-2! justify-center h-full'
+            >
+              <Phone className="w-4 h-4 text-white" />
+              <span>250-788-9990</span>
+            </a>
             <a
               href="https://direct-book.com/properties/theliontaverninnltd"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold"
+              className="btn-gold px-2!"
             >
               <span>Book Now</span>
-              <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-white flex-shrink-0 text-primary">
+              {/* <span className="hidden lg:inline-flex items-center justify-center w-4 h-4 rounded-full bg-white flex-shrink-0 text-primary">
                 <svg className="w-1.5 h-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="5.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
-              </span>
+              </span> */}
             </a>
           </div>
 
