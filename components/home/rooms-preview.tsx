@@ -14,7 +14,7 @@ const rooms = [
   {
     name: 'King Suite',
     description: 'Spacious suite with a comfortable king-size bed, full kitchenette, and seating area.',
-    image: '/images/king-suite-chetwynd.jpg',
+    image: '/images/king-suite-1-chetwynd.jpg',
     capacity: '2 Guests',
     beds: '1 King Bed',
   },

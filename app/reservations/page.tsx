@@ -65,7 +65,7 @@ const rooms = [
     id: 'king-suite',
     name: 'King Suite',
     description: 'Our spacious King Suite offers the ultimate in comfort with a luxurious king-size bed, full kitchenette, and elegant furnishings. Perfect for couples or business travelers seeking extra space and amenities.',
-    image: '/images/king-suite-chetwynd.jpg',
+    image: '/images/king-suite-1-chetwynd.jpg',
     capacity: '2 Guests',
     beds: '1 King Bed',
     rating: '4.8',

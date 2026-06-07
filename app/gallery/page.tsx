@@ -10,62 +10,108 @@ import {
   DialogContent,
   DialogTitle,
 } from '@/components/ui/dialog'
-import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react'
 
 const galleryImages = [
   {
-    src: '/images/hero-hotel.jpg',
+    src: 'https://img.youtube.com/vi/ty-oCw56Egc/maxresdefault.jpg',
+    alt: 'The Lion Inn & Suites Video Tour',
+    category: 'Video',
+    videoUrl: 'https://www.youtube.com/embed/ty-oCw56Egc',
+    isVideo: true,
+  },
+  {
+    src: '/images/welcome-to-chetwynd.jpg',
+    alt: 'Welcome to Chetwynd',
+    category: 'Location',
+  },
+  {
+    src: '/images/the-lion-inn-suites-surroundings-chetwynd.jpg',
+    alt: 'Beautiful Chetwynd BC scenery',
+    category: 'Location',
+  },
+  {
+    src: '/images/the-lion-inn-suites-exterior-chetwynd.jpg',
     alt: 'The Lion Inn & Suites exterior view',
     category: 'Property',
   },
   {
-    src: '/images/gallery-exterior-2.jpg',
+    src: '/images/the-lion-inn-suites-night-chetwynd.jpg',
     alt: 'Hotel exterior at dusk',
     category: 'Property',
   },
   {
-    src: '/images/room-king.jpg',
-    alt: 'King Suite bedroom',
-    category: 'Rooms',
-  },
-  {
-    src: '/images/room-queen.jpg',
-    alt: 'Queen Suite bedroom',
-    category: 'Rooms',
-  },
-  {
-    src: '/images/room-double-queen.jpg',
-    alt: 'Double Queen Suite',
-    category: 'Rooms',
-  },
-  {
-    src: '/images/room-studio.jpg',
-    alt: 'Bachelor Studio Suite',
-    category: 'Rooms',
-  },
-  {
-    src: '/images/amenity-kitchen.jpg',
-    alt: 'Full kitchenette with appliances',
-    category: 'Amenities',
-  },
-  {
-    src: '/images/gallery-bathroom.jpg',
-    alt: 'Modern bathroom with ceramic tile shower',
-    category: 'Amenities',
-  },
-  {
-    src: '/images/gallery-lobby.jpg',
+    src: '/images/the-lion-inn-suites-lobby-chetwynd.jpg',
     alt: 'Hotel reception and lobby area',
     category: 'Property',
   },
   {
-    src: '/images/chetwynd-scenery.jpg',
-    alt: 'Beautiful Chetwynd BC scenery',
-    category: 'Location',
+    src: '/images/king-suite-1-chetwynd.jpg',
+    alt: 'King Suite bedroom',
+    category: 'Rooms',
+    badge: 'King Suite',
   },
+  {
+    src: '/images/king-suite-2-chetwynd.jpg',
+    alt: 'King Suite bedroom',
+    category: 'Rooms',
+    badge: 'King Suite',
+  },
+  {
+    src: '/images/king-suite-3-chetwynd.jpg',
+    alt: 'King Suite bedroom',
+    category: 'Rooms',
+    badge: 'King Suite',
+  },
+  {
+    src: '/images/queen-suite-chetwynd.jpg',
+    alt: 'Queen Suite bedroom',
+    category: 'Rooms',
+    badge: 'Queen Suite',
+  },
+  {
+    src: '/images/double-queen-suite-chetwynd.jpg',
+    alt: 'Double Queen Suite',
+    category: 'Rooms',
+    badge: 'Double Queen Suite',
+  },
+  {
+    src: '/images/bachelor-studio-suite-1-chetwynd.jpg',
+    alt: 'Bachelor Studio Suite',
+    category: 'Rooms',
+    badge: 'Bachelor Studio',
+  },
+  {
+    src: '/images/bachelor-studio-suite-2-chetwynd.jpg',
+    alt: 'Bachelor Studio Suite',
+    category: 'Rooms',
+    badge: 'Bachelor Studio',
+  },
+  {
+    src: '/images/bachelor-studio-suite-3-chetwynd.jpg',
+    alt: 'Bachelor Studio Suite',
+    category: 'Rooms',
+    badge: 'Bachelor Studio',
+  },
+  {
+    src: '/images/the-lion-inn-suites-kitchen-facility-chetwynd.jpg',
+    alt: 'Full kitchenette with appliances',
+    category: 'Amenities',
+  },
+  {
+    src: '/images/the-lion-inn-suites-kitchen-stove-chetwynd.jpg',
+    alt: 'Suite cooking stove',
+    category: 'Amenities',
+  },
+  {
+    src: '/images/the-lion-inn-suites-ceramic-shower-chetwynd.jpg',
+    alt: 'Suite ceramic shower',
+    category: 'Amenities',
+  },
+
 ]
 
-const categories = ['All', 'Property', 'Rooms', 'Amenities', 'Location']
+const categories = ['All', 'Video', 'Property', 'Rooms', 'Amenities', 'Location']
 
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState('All')
@@ -114,8 +160,8 @@ export default function GalleryPage() {
                 Browse Our Gallery
               </h1>
               <p className="text-secondary-foreground/70 text-lg leading-relaxed text-pretty">
-                Located right in the heart of Chetwynd, The Lion Inn & Suites offers 19 contemporary 
-                suites fully equipped with high-end appliances and tasteful trendy design rooms that 
+                Located right in the heart of Chetwynd, The Lion Inn & Suites offers 19 contemporary
+                suites fully equipped with high-end appliances and tasteful trendy design rooms that
                 will make you feel like a home away home.
               </p>
             </div>
@@ -162,6 +208,18 @@ export default function GalleryPage() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
+                  {image.badge && (
+                    <span className="absolute top-4 left-4 z-20 bg-accent/95 backdrop-blur-xs text-accent-foreground border border-accent-foreground/10 text-[10px] sm:text-xs font-semibold px-2.5 py-1 rounded-md tracking-wider uppercase shadow-md">
+                      {image.badge}
+                    </span>
+                  )}
+                  {image.isVideo && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors duration-300">
+                      <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                        <Play className="w-8 h-8 fill-current ml-1" />
+                      </div>
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/40 transition-colors duration-300" />
                   <div className="absolute inset-0 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="text-left">
@@ -186,13 +244,23 @@ export default function GalleryPage() {
             {selectedImageIndex !== null && (
               <div className="relative">
                 <div className="relative aspect-video">
-                  <Image
-                    src={filteredImages[selectedImageIndex].src}
-                    alt={filteredImages[selectedImageIndex].alt}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 1024px) 100vw, 80vw"
-                  />
+                  {filteredImages[selectedImageIndex].isVideo ? (
+                    <iframe
+                      src={`${filteredImages[selectedImageIndex].videoUrl}?autoplay=1`}
+                      title={filteredImages[selectedImageIndex].alt}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute inset-0 w-full h-full border-0"
+                    />
+                  ) : (
+                    <Image
+                      src={filteredImages[selectedImageIndex].src}
+                      alt={filteredImages[selectedImageIndex].alt}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 1024px) 100vw, 80vw"
+                    />
+                  )}
                 </div>
 
                 {/* Navigation */}
