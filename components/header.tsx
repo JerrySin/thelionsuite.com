@@ -74,7 +74,7 @@ export function Header() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:block">
+          <div className="block">
             <a
               href="https://direct-book.com/properties/theliontaverninnltd"
               target="_blank"
