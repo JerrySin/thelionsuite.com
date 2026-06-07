@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
+import { Slideshow } from '@/components/slideshow'
 import {
   MapPin,
   Car,
@@ -72,6 +73,13 @@ const travelInfo = [
   },
 ];
 
+const slides = [
+  '/images/the-lion-inn-suites-double-queen-room-chetwynd.jpg',
+  '/images/the-lion-inn-suites-kitchen-stove-chetwynd.jpg',
+  '/images/the-lion-inn-suites-kitchen-facility-chetwynd.jpg',
+  '/images/the-lion-inn-suites-queen-room-chetwynd.jpg',
+];
+
 export default function LocationPage() {
   const [mapLoaded, setMapLoaded] = useState(false);
 
@@ -83,25 +91,27 @@ export default function LocationPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-background">
+      <main>
         {/* Hero Section */}
-        <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-          <Image
-            src="/images/chetwynd-scenery.jpg"
-            alt="Chetwynd British Columbia scenery"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/50 to-navy/80" />
-          <div className="relative z-10 text-center px-4">
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-cream mb-4">
-              Our Location
-            </h1>
-            <p className="text-cream/90 text-lg md:text-xl max-w-2xl mx-auto">
-              Gateway to Northern British Columbia&apos;s Natural Wonders
-            </p>
+        <section className="relative min-h-[60vh] flex items-center pt-28 pb-20 overflow-hidden">
+          {/* Background Slideshow */}
+          <Slideshow slides={slides} className="absolute inset-0 z-0" />
+
+          <div className="absolute inset-0 z-10 hero-overlay" />
+
+          <div className="relative z-20 w-full">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="text-center max-w-3xl mx-auto">
+                <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-secondary-foreground mb-6 text-balance tracking-[0.04em] uppercase">
+                  Our Location
+                </h1>
+                <p className="text-[#dbcbb0] text-lg md:text-xl max-w-2xl mx-auto text-pretty">
+                  Gateway to Northern British Columbia&apos;s Natural Wonders
+                </p>
+              </div>
+            </div>
           </div>
+
         </section>
 
         {/* Address & Quick Info */}

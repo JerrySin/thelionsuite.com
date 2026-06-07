@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
-import { RoomsHero } from '@/components/rooms-hero'
+import { Slideshow } from '@/components/slideshow'
 import { BookingWidget } from '@/components/booking-widget'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -34,7 +34,12 @@ export const metadata: Metadata = {
     description: 'Explore our 19 contemporary suites with full kitchenettes in Chetwynd, BC.',
   },
 }
-
+const slides = [
+  '/images/the-lion-inn-suites-double-queen-room-chetwynd.jpg',
+  '/images/the-lion-inn-suites-kitchen-stove-chetwynd.jpg',
+  '/images/the-lion-inn-suites-kitchen-facility-chetwynd.jpg',
+  '/images/the-lion-inn-suites-queen-room-chetwynd.jpg',
+];
 const rooms = [
   {
     id: 'double-queen-suite',
@@ -49,7 +54,7 @@ const rooms = [
       'Two queen-size beds',
       'Full kitchenette with cooking essentials',
       'Spacious living area',
-      'Flat screen TV with cable',
+      'Flat screen Digital TV',
       'Private bathroom with shower',
       'Independent climate control',
       'Free high-speed Wi-Fi',
@@ -69,7 +74,7 @@ const rooms = [
       'King-size bed with premium mattress',
       'Full kitchenette with refrigerator & stove',
       'Separate seating area with desk',
-      'Flat screen TV with cable',
+      'Flat screen Digital TV',
       'Private bathroom with shower',
       'Independent climate control',
       'Free high-speed Wi-Fi',
@@ -89,7 +94,7 @@ const rooms = [
       'Queen-size bed with quality linens',
       'Full kitchenette with cooking essentials',
       'Comfortable seating area',
-      'Flat screen TV with cable',
+      'Flat screen Digital TV',
       'Private bathroom with shower',
       'Independent climate control',
       'Free high-speed Wi-Fi',
@@ -109,7 +114,7 @@ const rooms = [
       'Comfortable full bed',
       'Full kitchenette with cooking essentials',
       'Dining/work area',
-      'Flat screen TV with cable',
+      'Flat screen Digital TV',
       'Private bathroom with shower',
       'Independent climate control',
       'Free high-speed Wi-Fi',
@@ -126,7 +131,7 @@ const amenityIcons: Record<string, React.ComponentType<any>> = {
   variousviews: Mountain,
   'Full kitchenette with cooking essentials': Utensils,
   'Free high-speed Wi-Fi': Wifi,
-  'Flat screen TV with cable': Tv,
+  'Flat screen Digital TV': Tv,
   'Independent climate control': Snowflake,
   'Private bathroom with shower': Bath,
   'Full kitchenette with refrigerator & stove': Refrigerator,
@@ -139,7 +144,31 @@ export default function ReservationsPage() {
     <>
       <Header />
       <main>
-        <RoomsHero />
+        <section className="relative min-h-[60vh] flex items-center pt-28 pb-20 overflow-hidden">
+          {/* Background Slideshow */}
+          <Slideshow slides={slides} className="absolute inset-0 z-0" />
+
+          <div className="absolute inset-0 z-10 hero-overlay" />
+
+          <div className="relative z-20 w-full">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="text-center max-w-3xl mx-auto">
+                <p className="font-sans text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[#a4c3dc] mb-4">
+                  Accommodations
+                </p>
+                <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-secondary-foreground mb-6 text-balance tracking-[0.04em] uppercase">
+                  Our Rooms & Suites
+                </h1>
+                <p className="font-sans text-[0.95rem] text-[#dbcbb0] leading-[1.7] max-w-[520px] mx-auto text-pretty">
+                  Choose from 19 contemporary suites, each featuring a fully-equipped kitchenette,
+                  modern amenities, and thoughtful design for your comfort. Whether you&apos;re here for
+                  business or pleasure, we have the perfect accommodation for you.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
 
         {/* Quick Amenities Bar */}
         <section className="py-6 bg-muted border-y border-border">
@@ -148,7 +177,7 @@ export default function ReservationsPage() {
               {[
                 { icon: Utensils, label: 'Full Kitchenette' },
                 { icon: Wifi, label: 'Free Wi-Fi' },
-                { icon: Tv, label: 'Cable TV' },
+                { icon: Tv, label: 'Digital TV' },
                 { icon: Snowflake, label: 'Climate Control' },
                 { icon: Bath, label: 'Private Bath' },
                 { icon: Microwave, label: 'Microwave' },

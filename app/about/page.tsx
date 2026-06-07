@@ -19,6 +19,7 @@ export const metadata: Metadata = {
 const slides = [
   '/images/the-lion-inn-suites-exterior-chetwynd.jpg',
   '/images/the-lion-inn-suites-night-chetwynd.jpg',
+  '/images/the-lion-inn-suites-surroundings-chetwynd.jpg',
 ]
 
 const values = [
@@ -81,7 +82,7 @@ export default function AboutPage() {
   return (
     <>
       <Header />
-      <main className="pt-20">
+      <main>
         {/* Hero Section */}
         <section className="min-h-screen flex items-center pt-20">
           <Slideshow slides={slides} className="absolute inset-0 z-0" />
