@@ -18,6 +18,7 @@ import {
   Clock,
   Phone,
   Navigation,
+  ArrowRight,
 } from "lucide-react";
 
 const nearbyAttractions = [
@@ -114,81 +115,6 @@ export default function LocationPage() {
 
         </section>
 
-        {/* Address & Quick Info */}
-        <section className="py-16 bg-cream">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 -mt-24 relative z-20">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
-                        <MapPin className="w-6 h-6 text-gold" />
-                      </div>
-                      <div>
-                        <h2 className="font-serif text-2xl text-navy mb-2">
-                          Address
-                        </h2>
-                        <p className="text-charcoal/80 leading-relaxed">
-                          5132 46th Ave
-                          <br />
-                          Chetwynd, BC V0C 1J0
-                          <br />
-                          Canada
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
-                        <Phone className="w-6 h-6 text-gold" />
-                      </div>
-                      <div>
-                        <h3 className="font-serif text-xl text-navy mb-2">
-                          Contact
-                        </h3>
-                        <p className="text-charcoal/80">
-                          <a
-                            href="tel:250-788-9990"
-                            className="hover:text-gold transition-colors"
-                          >
-                            250-788-9990
-                          </a>
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
-                        <Clock className="w-6 h-6 text-gold" />
-                      </div>
-                      <div>
-                        <h3 className="font-serif text-xl text-navy mb-2">
-                          Front Desk
-                        </h3>
-                        <p className="text-charcoal/80">24/7 Staff Available</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col justify-center">
-                    <a
-                      href={`https://www.google.com/maps/dir/?api=1&destination=${hotelCoordinates.lat},${hotelCoordinates.lng}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full"
-                    >
-                      <Button className="w-full bg-gold hover:bg-gold/90 text-navy font-semibold py-6 text-lg">
-                        <Navigation className="w-5 h-5 mr-2" />
-                        Get Directions
-                      </Button>
-                    </a>
-                    <p className="text-center text-charcoal/60 text-sm mt-4">
-                      Opens in Google Maps
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Interactive Map */}
         <section className="py-16 bg-white">
@@ -271,75 +197,91 @@ export default function LocationPage() {
         </section>
 
         {/* Nearby Attractions */}
-        <section className="py-20 bg-cream">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <span className="text-gold font-medium tracking-wider uppercase text-sm">
-                Explore the Area
-              </span>
-              <h2 className="font-serif text-3xl md:text-4xl text-navy mt-2 mb-4">
-                Nearby Attractions
-              </h2>
-              <p className="text-charcoal/70 max-w-2xl mx-auto">
-                Chetwynd and the surrounding Peace River region offer incredible
-                natural beauty and unique experiences
-              </p>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-              {nearbyAttractions.map((attraction) => (
-                <div
-                  key={attraction.name}
-                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-charcoal/5"
-                >
-                  <div className="w-12 h-12 rounded-full bg-navy/10 flex items-center justify-center mb-4">
-                    <attraction.icon className="w-6 h-6 text-navy" />
+        <section className="py-20 lg:py-28 bg-muted">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+              <div>
+                <p className="text-primary font-medium tracking-wider uppercase text-sm mb-4">
+                  Explore the Area
+                </p>
+                <h2 className="font-serif text-3xl sm:text-4xl text-foreground mb-6 text-balance">
+                  Nearby Attractions
+                </h2>
+                <p className="text-muted-foreground text-lg mb-8 text-pretty">
+                  Chetwynd and the surrounding Peace River region offer incredible
+                  natural beauty and unique experiences. Discover the famous chainsaw carvings,
+                  scenic provincial parks, and local outdoor adventures right at our doorstep.
+                </p>
+                <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${hotelCoordinates.lat},${hotelCoordinates.lng}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Get Map Directions
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {nearbyAttractions.map((attraction) => (
+                  <div
+                    key={attraction.name}
+                    className="bg-card p-6 rounded-xl border border-border flex flex-col items-center text-center"
+                  >
+                    <attraction.icon className="h-6 w-6 text-primary mb-2" />
+                    <h3 className="font-serif text-lg text-card-foreground mb-1">
+                      {attraction.name}
+                    </h3>
+                    <p className="text-primary text-xs font-semibold mb-2">
+                      {attraction.distance}
+                    </p>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {attraction.description}
+                    </p>
                   </div>
-                  <h3 className="font-serif text-lg text-navy mb-1">
-                    {attraction.name}
-                  </h3>
-                  <p className="text-gold text-sm font-medium mb-3">
-                    {attraction.distance}
-                  </p>
-                  <p className="text-charcoal/70 text-sm leading-relaxed">
-                    {attraction.description}
-                  </p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="font-serif text-3xl text-navy mb-4">
-              Ready to Visit?
-            </h2>
-            <p className="text-charcoal/70 mb-8 max-w-xl mx-auto">
-              Book your stay at The Lion Inn & Suites and experience Northern
-              BC&apos;s warm hospitality
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="https://direct-book.com/properties/theliontaverninnltd"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button className="bg-gold hover:bg-gold/90 text-navy font-semibold px-8 py-6 text-lg">
-                  Book Your Stay
-                </Button>
-              </Link>
-              <Link href="/contact">
+        <section className="py-20 lg:py-28 bg-background">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto">
+              <h2 className="font-serif text-3xl sm:text-4xl text-foreground mb-6 text-balance">
+                Ready to Visit Chetwynd?
+              </h2>
+              <p className="text-muted-foreground text-lg mb-8 text-pretty">
+                Book your stay at The Lion Inn &amp; Suites and experience Northern
+                BC&apos;s warm hospitality.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button
-                  variant="outline"
-                  className="border-navy text-navy hover:bg-navy hover:text-cream px-8 py-6 text-lg"
+                  asChild
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground"
                 >
-                  Contact Us
+                  <a
+                    href="https://direct-book.com/properties/theliontaverninnltd"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Book Your Stay
+                  </a>
                 </Button>
-              </Link>
+                <Button asChild variant="outline" size="lg">
+                  <Link href="/contact">
+                    Contact Us
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
+
       </main>
       <Footer />
     </>
