@@ -8,7 +8,7 @@ const SLIDES = [
   '/images/the-lion-inn-suites-night-chetwynd.jpg',
   '/images/the-lion-inn-suites-surroundings-chetwynd.jpg',
   '/images/the-lion-inn-suites-lobby-entrance-chetwynd.jpg',
-  '/images/the-lion-inn-suites-laundry-facility-chetwynd.jpg',
+  '/images/the-lion-inn-suites-kitchen-facility-chetwynd.jpg',
   '/images/the-lion-inn-suites-queen-room-chetwynd.jpg',
   '/images/the-lion-inn-suites-double-queen-room-chetwynd.jpg',
 ]
@@ -30,9 +30,8 @@ export function RoomsHero() {
         {SLIDES.map((slide, index) => (
           <div
             key={slide}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
           >
             <Image
               src={slide}
