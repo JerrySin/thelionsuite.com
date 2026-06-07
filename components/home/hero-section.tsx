@@ -11,7 +11,7 @@ const SLIDES = [
   '/images/the-lion-inn-suites-surroundings-chetwynd.jpg',
   '/images/the-lion-inn-suites-kitchen-stove-chetwynd.jpg',
   '/images/the-lion-inn-suites-kitchen-facility-chetwynd.jpg',
-  '/images/the-lion-inn-suites-queen-room-chetwynd.jpg',
+  '/images/the-lion-inn-suites-hospitality-chetwynd.jpg',
   '/images/the-lion-inn-suites-double-queen-room-chetwynd.jpg',
 ]
 
