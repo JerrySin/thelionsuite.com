@@ -7,6 +7,13 @@ import { BookingWidget } from '@/components/booking-widget'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from '@/components/ui/carousel'
+import {
   Users,
   Bed,
   Utensils,
@@ -45,7 +52,11 @@ const rooms = [
     id: 'double-queen-suite',
     name: 'Double Queen Suite',
     description: 'Perfect for families or groups, our Double Queen Suite features two queen-size beds and a full kitchenette. Enjoy ample space for everyone with all the comforts of home during your stay.',
-    image: '/images/double-queen-suite-chetwynd.jpg',
+    images: [
+      '/images/double-queen-suite-1-chetwynd.jpg',
+      '/images/double-queen-suite-2-chetwynd.jpg',
+      '/images/double-queen-suite-3-chetwynd.jpg',
+    ],
     capacity: '4 Guests',
     beds: '2 Queen Beds',
     rating: '4.7',
@@ -65,7 +76,11 @@ const rooms = [
     id: 'king-suite',
     name: 'King Suite',
     description: 'Our spacious King Suite offers the ultimate in comfort with a luxurious king-size bed, full kitchenette, and elegant furnishings. Perfect for couples or business travelers seeking extra space and amenities.',
-    image: '/images/king-suite-1-chetwynd.jpg',
+    images: [
+      '/images/king-suite-1-chetwynd.jpg',
+      '/images/king-suite-2-chetwynd.jpg',
+      '/images/king-suite-3-chetwynd.jpg',
+    ],
     capacity: '2 Guests',
     beds: '1 King Bed',
     rating: '4.8',
@@ -85,7 +100,11 @@ const rooms = [
     id: 'queen-suite',
     name: 'Queen Suite',
     description: 'The Queen Suite combines comfort and functionality with a queen-size bed and fully-equipped kitchenette. Ideal for solo travelers or couples who appreciate modern amenities and a home-like atmosphere.',
-    image: '/images/queen-suite-chetwynd.jpg',
+    images: [
+      '/images/queen-suite-1-chetwynd.jpg',
+      '/images/queen-suite-2-chetwynd.jpg',
+      '/images/queen-suite-3-chetwynd.jpg',
+    ],
     capacity: '2 Guests',
     beds: '1 Queen Bed',
     rating: '4.7',
@@ -105,7 +124,11 @@ const rooms = [
     id: 'bachelor-studio',
     name: 'Bachelor Studio Suite',
     description: 'Our efficient Bachelor Studio is ideal for extended stays, featuring a comfortable bed and full kitchen facilities. Experience home-like living with all the conveniences you need for longer visits.',
-    image: '/images/bachelor-studio-suite-chetwynd.jpg',
+    images: [
+      '/images/bachelor-studio-suite-1-chetwynd.jpg',
+      '/images/bachelor-studio-suite-2-chetwynd.jpg',
+      '/images/bachelor-studio-suite-3-chetwynd.jpg',
+    ],
     capacity: '2 Guests',
     beds: '1 Full Bed',
     rating: '4.6',
@@ -206,16 +229,30 @@ export default function ReservationsPage() {
                 >
                   {/* Image */}
                   <div className={`relative ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-                      <Image
-                        src={room.image}
-                        alt={room.name}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                      />
+                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden group">
+                      <Carousel className="w-full h-full">
+                        <CarouselContent className="h-full -ml-0">
+                          {room.images.map((src, imgIdx) => (
+                            <CarouselItem key={src} className="h-full pl-0 relative aspect-[4/3]">
+                              <Image
+                                src={src}
+                                alt={`${room.name} image ${imgIdx + 1}`}
+                                fill
+                                className="object-cover"
+                                sizes="(max-width: 1024px) 100vw, 50vw"
+                              />
+                            </CarouselItem>
+                          ))}
+                        </CarouselContent>
+                        {room.images.length > 1 && (
+                          <>
+                            <CarouselPrevious className="left-4! bg-white/80 hover:bg-white text-[#3d1f0a] border-none shadow-md transition-colors z-20" />
+                            <CarouselNext className="right-4! bg-white/80 hover:bg-white text-[#3d1f0a] border-none shadow-md transition-colors z-20" />
+                          </>
+                        )}
+                      </Carousel>
                       {room.popular && (
-                        <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground">
+                        <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground z-20">
                           Popular Choice
                         </Badge>
                       )}

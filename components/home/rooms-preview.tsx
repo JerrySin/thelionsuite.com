@@ -7,7 +7,7 @@ const rooms = [
   {
     name: 'Double Queen Suite',
     description: 'Perfect for families — two queen beds, full kitchenette, and ample space to spread out.',
-    image: '/images/double-queen-suite-chetwynd.jpg',
+    image: '/images/double-queen-suite-1-chetwynd.jpg',
     capacity: '4 Guests',
     beds: '2 Queen Beds',
   },
@@ -21,14 +21,14 @@ const rooms = [
   {
     name: 'Queen Suite',
     description: 'Contemporary suite featuring a queen-size bed with modern amenities and a fully-equipped kitchenette.',
-    image: '/images/queen-suite-chetwynd.jpg',
+    image: '/images/queen-suite-1-chetwynd.jpg',
     capacity: '2 Guests',
     beds: '1 Queen Bed',
   },
   {
     name: 'Bachelor Studio Suite',
     description: 'Efficient studio ideal for extended stays with full kitchen facilities and tasteful design.',
-    image: '/images/bachelor-studio-suite-chetwynd.jpg',
+    image: '/images/bachelor-studio-suite-1-chetwynd.jpg',
     capacity: '2 Guests',
     beds: '1 Full Bed',
   },
