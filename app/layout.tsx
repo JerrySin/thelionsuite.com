@@ -87,6 +87,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://thelionsuite.com',
   },
+  icons: {
+    icon: '/logo.svg',
+    apple: '/logo.svg',
+  },
 }
 
 export const viewport: Viewport = {
